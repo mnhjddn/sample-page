@@ -1,0 +1,22 @@
+name: Deploy via FTP
+
+on:
+  push:
+    branches:
+      - main 
+
+jobs:
+  web-deploy:
+      name: 🎉 Deploy
+      runs-on: ubuntu-latest
+      steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v3
+      
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ftp.yustikarahma.id
+          port: 21
+          username: auto@yustikarahma.id
+          password: P@ssw0rd123
